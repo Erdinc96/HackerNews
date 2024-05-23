@@ -1,5 +1,5 @@
 function Header() {
-  return <p>Header with stuff maybe</p>;
+  return <p className="header">Header with stuff maybe</p>;
 }
 
 export default Header;

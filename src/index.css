@@ -6,3 +6,53 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+body {
+  background-color: #1e252b;
+  color: white;
+}
+
+.newslist {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.newsItem {
+  list-style: none;
+  background-color: #262d34;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.mainPage {
+  display: flex;
+}
+
+.leftMenu {
+  margin: 1rem;
+  padding: 1rem;
+  width: 15vw;
+  height: fit-content;
+  background-color: #262d34;
+  border-radius: 10px;
+}
+
+.rightMenu {
+  margin: 1rem;
+  padding: 2rem;
+  width: 15vw;
+  height: fit-content;
+  background-color: #262d34;
+  border-radius: 10px;
+  font-weight: 100;
+}
+
+.header {
+  margin: 1rem 0;
+  height: 10vh;
+  width: 100vw;
+  background-color: #262d34;
+}

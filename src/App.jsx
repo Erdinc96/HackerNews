@@ -1,5 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import LeftMenu from "./components/LeftMenu";
+import RightMenu from "./components/RightMenu";
 
 function App() {
   const [data, setData] = useState([]);
@@ -39,19 +41,25 @@ function App() {
 
   return (
     <>
-      <ul>
-        {data.map((item) => (
-          <li key={item.objectID}>
-            <p>Title: {item.title}</p>
-            <p>URL: {item.url}</p>
-            <p>Author: {item.author}</p>
-            <p>Date: {item.created_at}</p>
-            <p>Points: {item.points}</p>
-            <p>Comments: {item.num_comments}</p>
-            <br />
-          </li>
-        ))}
-      </ul>
+      <div className="mainPage">
+        <LeftMenu />
+
+        <ul className="newsList">
+          {data.map((item) => (
+            <li className="newsItem" key={item.objectID}>
+              <p>Title: {item.title}</p>
+              <p>URL: {item.url}</p>
+              <p>Author: {item.author}</p>
+              <p>Date: {item.created_at}</p>
+              <p>Points: {item.points}</p>
+              <p>Comments: {item.num_comments}</p>
+              <br />
+            </li>
+          ))}
+        </ul>
+
+        <RightMenu />
+      </div>
     </>
   );
 }
