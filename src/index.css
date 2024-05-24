@@ -120,7 +120,7 @@ body {
   height: fit-content;
   background-color: #262d34;
   border-radius: 10px;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 .rightMenu li {
@@ -209,23 +209,23 @@ button:hover {
 
 .smallDetails {
   font-size: smaller;
-  font-weight: 300;
+  font-weight: 200;
 }
 .points {
   font-size: smaller;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .heart {
   color: transparent;
   text-shadow: 0 0 0 #2c353d;
-  display: inline-block;
+  /* display: inline-block; */
   float: right;
 }
 .heart:hover {
   color: transparent;
   text-shadow: 0 0 0 #0cc0df;
-  display: inline-block;
+  /* display: inline-block; */
   float: right;
 }
 
