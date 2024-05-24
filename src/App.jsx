@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
+import "semantic-ui-css/semantic.min.css";
 
 function App() {
   const [data, setData] = useState([]);
@@ -55,40 +56,21 @@ function App() {
     return <div>Error: {error.message}</div>;
   }
 
-  //   return (
-  //     <>
-  //       <Header />
-  //       <div className="mainPage">
-  //         <LeftMenu />
+  //----------------------FORMAT THE DATE---------------------------------
 
-  //         <ul className="newsList">
-  //           {data.map((item) => (
-  //             <li className="newsItem" key={item.objectID}>
-  //               <div>
-  //                 <div>{item.title}</div> <div className="heart">🤍</div>
-  //                 <div className="itemURL">{item.url}</div>
-  //                 <i class="fa-light fa-heart"></i>
-  //               </div>
+  function formatDate(dateString) {
+    const date = new Date(dateString);
 
-  //               <div className="bottomCard">
-  //                 <div className="smallDetails">{item.author}</div>
-  //                 <div className="smallDetails">{item.created_at}</div>
-  //                 <div className="smallDetails">
-  //                   Comments: {item.num_comments}
-  //                 </div>
-  //                 <div className="points">Points: {item.points}</div>
-  //               </div>
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
 
-  //               {/*  */}
-  //             </li>
-  //           ))}
-  //         </ul>
+    return ` on ${day}.${month}.${year} at ${hours}:${minutes}`;
+  }
 
-  //         <RightMenu />
-  //       </div>
-  //     </>
-  //   );
-  // }
+  //-------------------------------------------------------------------------
 
   return (
     <>
@@ -107,13 +89,18 @@ function App() {
                   onClick={() => handleTitleClick(item.url)}>
                   {item.title}
                 </a>
+
+                {/* ---------THE HEART IS JUST A PLACE HOLDER AND NOT WORKING CORRECTLY YET, I THINK THIS CAN BE DONE BETTER WITH THE REACT SEMANTIC UI------- */}
+
                 <div className="heart">🤍</div>
                 <div className="itemURL">{item.url}</div>
-                <i className="fa-light fa-heart"></i>
               </div>
               <div className="bottomCard">
                 <div className="smallDetails">{item.author}</div>
-                <div className="smallDetails">{item.created_at}</div>
+                {/* <div className="smallDetails">{item.created_at}</div> */}
+                <div className="smallDetails">
+                  {formatDate(item.created_at)}
+                </div>
                 <div className="smallDetails">
                   Comments: {item.num_comments}
                 </div>
