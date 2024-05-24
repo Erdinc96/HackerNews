@@ -1,11 +1,13 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import Header from "./components/Header";
 import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
 
 function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ function App() {
         }
         const jsonData = await response.json();
         setData(jsonData.hits);
+        setArticles(jsonData.hits);
       } catch (error) {
         setError(error);
       } finally {
@@ -31,6 +34,19 @@ function App() {
     fetchData();
   }, []);
 
+  // ----------------------------------------------------------------
+  function handleSearch(query) {
+    if (query) {
+      const filteredArticles = data.filter((article) =>
+        article.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setArticles(filteredArticles);
+    } else {
+      setArticles(data);
+    }
+  }
+  // ----------------------------------------------------------------------
+
   if (loading) {
     return <p>Please wait...</p>;
   }
@@ -39,26 +55,74 @@ function App() {
     return <div>Error: {error.message}</div>;
   }
 
+  //   return (
+  //     <>
+  //       <Header />
+  //       <div className="mainPage">
+  //         <LeftMenu />
+
+  //         <ul className="newsList">
+  //           {data.map((item) => (
+  //             <li className="newsItem" key={item.objectID}>
+  //               <div>
+  //                 <div>{item.title}</div> <div className="heart">🤍</div>
+  //                 <div className="itemURL">{item.url}</div>
+  //                 <i class="fa-light fa-heart"></i>
+  //               </div>
+
+  //               <div className="bottomCard">
+  //                 <div className="smallDetails">{item.author}</div>
+  //                 <div className="smallDetails">{item.created_at}</div>
+  //                 <div className="smallDetails">
+  //                   Comments: {item.num_comments}
+  //                 </div>
+  //                 <div className="points">Points: {item.points}</div>
+  //               </div>
+
+  //               {/*  */}
+  //             </li>
+  //           ))}
+  //         </ul>
+
+  //         <RightMenu />
+  //       </div>
+  //     </>
+  //   );
+  // }
+
   return (
     <>
+      <Header onSearch={handleSearch} />
+
       <div className="mainPage">
         <LeftMenu />
-
         <ul className="newsList">
-          {data.map((item) => (
+          {articles.map((item) => (
             <li className="newsItem" key={item.objectID}>
-              <p>Title: {item.title}</p>
-              <p>URL: {item.url}</p>
-              <p>Author: {item.author}</p>
-              <p>Date: {item.created_at}</p>
-              <p>Points: {item.points}</p>
-              <p>Comments: {item.num_comments}</p>
-              <br />
+              <div>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleTitleClick(item.url)}>
+                  {item.title}
+                </a>
+                <div className="heart">🤍</div>
+                <div className="itemURL">{item.url}</div>
+                <i className="fa-light fa-heart"></i>
+              </div>
+              <div className="bottomCard">
+                <div className="smallDetails">{item.author}</div>
+                <div className="smallDetails">{item.created_at}</div>
+                <div className="smallDetails">
+                  Comments: {item.num_comments}
+                </div>
+                <div className="points">Points: {item.points}</div>
+              </div>
             </li>
           ))}
         </ul>
-
-        <RightMenu />
+        <RightMenu data={data} />
       </div>
     </>
   );
