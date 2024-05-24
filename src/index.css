@@ -7,24 +7,42 @@
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 body {
   background-color: #1e252b;
   color: white;
 }
 
-.newslist {
+.newsList {
   display: flex;
   flex-direction: column;
-  width: 60vw;
-  margin: 0 auto;
+  width: 63vw;
 }
 
 .newsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   list-style: none;
   background-color: #262d34;
   margin: 1rem;
   padding: 1rem;
   border-radius: 10px;
+}
+
+.bottomCard {
+  display: flex;
+  gap: 1rem;
+}
+
+.points {
+  /* flex: 1; */
+  margin-left: auto;
 }
 
 .mainPage {
@@ -33,26 +51,206 @@ body {
 
 .leftMenu {
   margin: 1rem;
-  padding: 1rem;
-  width: 15vw;
+  padding: 1.75rem;
+  width: 19vw;
   height: fit-content;
   background-color: #262d34;
   border-radius: 10px;
+  /* font-weight: 100; */
+}
+
+.leftMenu li {
+  border-radius: 5px;
+  text-align: right;
+  list-style: none;
+  font-size: smaller;
+  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.leftListItem1 {
+  background: linear-gradient(
+    90deg,
+    rgb(31, 28, 209) 0%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.leftListItem2 {
+  background: linear-gradient(
+    90deg,
+    rgb(115, 233, 61) 0%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.leftListItem3 {
+  background: linear-gradient(
+    90deg,
+    rgb(170, 25, 206) 0%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.leftListItem4 {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 136, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.leftListItem5 {
+  background: linear-gradient(
+    90deg,
+    rgb(255, 51, 0) 0%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .rightMenu {
   margin: 1rem;
-  padding: 2rem;
-  width: 15vw;
+  padding: 1.75rem;
+  width: 19vw;
   height: fit-content;
   background-color: #262d34;
   border-radius: 10px;
   font-weight: 100;
 }
 
+.rightMenu li {
+  font-size: smaller;
+  margin-bottom: 0.5rem;
+}
+
 .header {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   margin: 1rem 0;
   height: 10vh;
   width: 100vw;
   background-color: #262d34;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+
+.navLinks li {
+  transition: all 0.2s ease-in;
+}
+.navLinks li:hover {
+  transform: scale(1.05);
+
+  color: #0cc0df;
+}
+
+#searchInput {
+  border-radius: 10px;
+  border: none;
+  gap: 1rem;
+  background-color: #2c353d;
+  font-size: 1.2rem;
+  width: 20vw;
+  color: #0cc0df;
+}
+
+::placeholder {
+  color: #0cc0df;
+  font-style: italic;
+}
+
+button {
+  padding: 0 1rem;
+  background-color: #2c353d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+button:hover {
+  color: #0cc0df;
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: #0cc0df;
+  font-weight: 800;
+  transition: all 5s ease-in;
+}
+
+.logo:hover {
+  text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+    0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+}
+
+.signIn {
+  color: #0cc0df;
+  cursor: pointer;
+}
+
+.itemURL {
+  font-size: x-small;
+  color: #0cc0df;
+}
+
+.smallDetails {
+  font-size: smaller;
+  font-weight: 300;
+}
+.points {
+  font-size: smaller;
+  font-weight: 300;
+}
+
+.heart {
+  color: transparent;
+  text-shadow: 0 0 0 #2c353d;
+  display: inline-block;
+  float: right;
+}
+.heart:hover {
+  color: transparent;
+  text-shadow: 0 0 0 #0cc0df;
+  display: inline-block;
+  float: right;
+}
+
+@media screen and (max-width: 1085px) {
+  .navLinks {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .leftMenu {
+    display: none;
+  }
+  .rightMenu {
+    display: none;
+  }
+
+  .newsList {
+    width: 100vw;
+  }
+  .signIn {
+    display: none;
+  }
+  .newsItem {
+    margin: 0.5rem 0;
+    border-radius: 0;
+  }
 }
