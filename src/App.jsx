@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
+import LikeButton from "./components/LikeButton";
 import "semantic-ui-css/semantic.min.css";
 
 function App() {
@@ -70,6 +71,25 @@ function App() {
     return ` on ${day}.${month}.${year} at ${hours}:${minutes}`;
   }
 
+  //----------------------------TRYING TO GET THE THUMBS UP TO WORK---------------------
+
+  const ThumbsUpDown = () => {
+    const [isThumbsUp, setIsThumbsUp] = useState(true);
+
+    const handleClick = () => {
+      setIsThumbsUp(!isThumbsUp);
+    };
+
+    return (
+      <Icon
+        name={isThumbsUp ? "thumbs up outline" : "thumbs up"}
+        size="large"
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      />
+    );
+  };
+
   //-------------------------------------------------------------------------
 
   return (
@@ -92,7 +112,10 @@ function App() {
 
                 {/* ---------THE HEART IS JUST A PLACE HOLDER AND NOT WORKING CORRECTLY YET, I THINK THIS CAN BE DONE BETTER WITH THE REACT SEMANTIC UI------- */}
 
-                <div className="heart">🤍</div>
+                {/* <div className="heart">🤍</div> */}
+
+                <LikeButton />
+
                 <div className="itemURL">{item.url}</div>
               </div>
               <div className="bottomCard">
