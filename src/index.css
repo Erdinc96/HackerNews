@@ -21,6 +21,7 @@ body {
 .newsList {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   width: 63vw;
 }
 
@@ -249,4 +250,33 @@ button:hover {
     margin: 0.5rem 0;
     border-radius: 0;
   }
+}
+.pagination-nav {
+  margin-top: 2rem;
+  
+
+}
+
+.pagination-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: inherit;
+  
+  
+}
+
+.pagination-list li {
+  border: 1px solid;
+  padding: .5rem;
+  border-color: #fff;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+.pagination-list li:hover {
+  color: #0cc0df;
+  background-color: #fff;
+  border: none;
 }

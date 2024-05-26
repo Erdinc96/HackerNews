@@ -5,12 +5,18 @@ import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
 import LikeButton from "./components/LikeButton";
 import "semantic-ui-css/semantic.min.css";
+import  Pagination  from "./components/Pagination";
 
 function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [aritclesPerPage] = useState(3);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,8 +96,14 @@ function App() {
     );
   };
 
-  //-------------------------------------------------------------------------
 
+// --------------------------------------------------  Pagination --------
+const indexOfLastPost = currentPage * aritclesPerPage;
+const indexofFirstPost = indexOfLastPost - aritclesPerPage;
+const currentArticles = articles.slice(indexofFirstPost, indexOfLastPost);
+const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+//-------------------------------------
   return (
     <>
       <Header onSearch={handleSearch} />
@@ -99,7 +111,7 @@ function App() {
       <div className="mainPage">
         <LeftMenu />
         <ul className="newsList">
-          {articles.map((item) => (
+          {currentArticles.map((item) => (
             <li className="newsItem" key={item.objectID}>
               <div>
                 <a
@@ -134,6 +146,7 @@ function App() {
         </ul>
         <RightMenu data={data} />
       </div>
+      <Pagination paginate={paginate} aritclesPerPage = {aritclesPerPage} totalArticles = {articles.length} />
     </>
   );
 }
