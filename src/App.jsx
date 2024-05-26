@@ -6,6 +6,7 @@ import RightMenu from "./components/RightMenu";
 import LikeButton from "./components/LikeButton";
 import "semantic-ui-css/semantic.min.css";
 import  Pagination  from "./components/Pagination";
+import { PacmanLoader } from "react-spinners";
 
 function App() {
   const [data, setData] = useState([]);
@@ -56,7 +57,7 @@ function App() {
   // ----------------------------------------------------------------------
 
   if (loading) {
-    return <p>Please wait...</p>;
+    return <div className="ui active centered text loader massive ">This supposed to be a fancy PacMan Loader</div>;
   }
 
   if (error) {
