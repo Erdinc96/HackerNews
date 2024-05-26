@@ -6,6 +6,7 @@ import RightMenu from "./components/RightMenu";
 import LikeButton from "./components/LikeButton";
 import "semantic-ui-css/semantic.min.css";
 import  Pagination  from "./components/Pagination";
+import Footer from "./components/Footer";
 
 function App() {
   const [data, setData] = useState([]);
@@ -147,6 +148,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
         <RightMenu data={data} />
       </div>
       <Pagination paginate={paginate} aritclesPerPage = {aritclesPerPage} totalArticles = {articles.length} />
+      <Footer />
     </>
   );
 }
