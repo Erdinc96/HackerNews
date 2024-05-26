@@ -251,8 +251,13 @@ button:hover {
     border-radius: 0;
   }
 }
+
+
+
+/* Pagination */
+
 .pagination-nav {
-  margin-top: 2rem;
+  margin: 2rem 0 ;
   
 
 }
@@ -279,4 +284,50 @@ button:hover {
   color: #0cc0df;
   background-color: #fff;
   border: none;
+}
+
+/* footer */
+footer {
+  border-top: 1px solid;
+  border-top-color: #0cc0df;
+  width: 96vw;
+  margin: 0 auto;
+}
+.footer {
+  padding: .5rem 0;
+  height: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer img {
+  height: 6rem;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-around;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style-type: none;
+  padding-top: 1rem;
+  justify-content: center;
+}
+
+#footer-p {
+  font-family: 'sofia';
+  text-align: center;
+  color: #0cc0df;
+}
+
+.nav-foot a:hover {
+ font-size: 1.01em;
+ text-decoration: underline;
 }
