@@ -6,7 +6,7 @@ import RightMenu from "./components/RightMenu";
 import LikeButton from "./components/LikeButton";
 import "semantic-ui-css/semantic.min.css";
 import Pagination from "./components/Pagination";
-
+import { Icon } from "semantic-ui-react";
 import Footer from "./components/Footer";
 
 import { PacmanLoader } from "react-spinners";
