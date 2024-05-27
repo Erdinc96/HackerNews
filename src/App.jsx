@@ -5,12 +5,13 @@ import LeftMenu from "./components/LeftMenu";
 import RightMenu from "./components/RightMenu";
 import LikeButton from "./components/LikeButton";
 import "semantic-ui-css/semantic.min.css";
-import  Pagination  from "./components/Pagination";
+import Pagination from "./components/Pagination";
 
 import Footer from "./components/Footer";
 
 import { PacmanLoader } from "react-spinners";
 
+import RainbowEdition from "./components/RainbowEdition";
 
 function App() {
   const [data, setData] = useState([]);
@@ -19,9 +20,7 @@ function App() {
   const [error, setError] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [aritclesPerPage] = useState(3);
-
-
+  const [aritclesPerPage] = useState(5);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,7 +60,11 @@ function App() {
   // ----------------------------------------------------------------------
 
   if (loading) {
-    return <div className="ui active centered text loader massive ">This supposed to be a fancy PacMan Loader</div>;
+    return (
+      <div className="ui active centered text loader massive ">
+        This supposed to be a fancy PacMan Loader
+      </div>
+    );
   }
 
   if (error) {
@@ -101,21 +104,22 @@ function App() {
     );
   };
 
+  // --------------------------------------------------  Pagination --------
+  const indexOfLastPost = currentPage * aritclesPerPage;
+  const indexofFirstPost = indexOfLastPost - aritclesPerPage;
+  const currentArticles = articles.slice(indexofFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-// --------------------------------------------------  Pagination --------
-const indexOfLastPost = currentPage * aritclesPerPage;
-const indexofFirstPost = indexOfLastPost - aritclesPerPage;
-const currentArticles = articles.slice(indexofFirstPost, indexOfLastPost);
-const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-//-------------------------------------
+  //-------------------------------------
   return (
     <>
       <Header onSearch={handleSearch} />
 
       <div className="mainPage">
         <LeftMenu />
-        <ul className="newsList">
+        {/* <RainbowEdition /> */}
+
+        <ol className="newsList">
           {currentArticles.map((item) => (
             <li className="newsItem" key={item.objectID}>
               <div>
@@ -148,10 +152,17 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
         <RightMenu data={data} />
       </div>
-      <Pagination paginate={paginate} aritclesPerPage = {aritclesPerPage} totalArticles = {articles.length} />
+      <Pagination
+        paginate={paginate}
+        aritclesPerPage={aritclesPerPage}
+        totalArticles={articles.length}
+        // -----
+        currentPage={currentPage}
+        // --------
+      />
       <Footer />
     </>
   );
