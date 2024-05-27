@@ -117,6 +117,7 @@ function App() {
 
       <div className="mainPage">
         <LeftMenu />
+
         {/* <RainbowEdition /> */}
 
         <ol className="newsList">
