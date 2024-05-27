@@ -3,6 +3,8 @@ import React, { useState } from "react";
 function Header({ onSearch }) {
   const [query, setQuery] = useState("");
 
+  const [loveMode, setLoveMode] = useState(false);
+
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
@@ -10,6 +12,20 @@ function Header({ onSearch }) {
   const handleSearch = () => {
     onSearch(query);
   };
+
+  const handleJobsClick = () => {
+    activateRainbow();
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  function makeBlur() {
+    // document.body.style.backgroundColor = "red";
+  }
 
   return (
     <div className="header">
@@ -20,13 +36,14 @@ function Header({ onSearch }) {
           type="text"
           value={query}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
           name="inputField"
           id="searchInput"
-          placeholder="Type here to search..."
+          placeholder="type here to search..."
         />
 
         <button onClick={handleSearch} className="search-button">
-          Search
+          search
         </button>
       </div>
 
@@ -41,6 +58,7 @@ function Header({ onSearch }) {
           <li>submit</li>
         </ul>
       </div>
+
       <div className="signIn">sign in</div>
     </div>
   );

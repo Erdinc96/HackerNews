@@ -29,7 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  list-style: none;
+  list-style: decimal;
   background-color: #262d34;
   margin: 1rem;
   padding: 1rem;
@@ -147,19 +147,20 @@ body {
   cursor: pointer;
 }
 
-.navLinks li {
+/* .navLinks li {
   transition: all 0.2s ease-in;
-}
-.navLinks li:hover {
-  transform: scale(1.05);
+} */
+/* .navLinks li:hover {
+  transform: scale(1.05); 
 
   color: #0cc0df;
-}
+} */
 
 #searchInput {
   border-radius: 10px;
   border: none;
   gap: 1rem;
+  padding: 0 1rem;
   background-color: #2c353d;
   font-size: 1.2rem;
   width: 20vw;
@@ -232,10 +233,16 @@ button:hover {
   }
 }
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 790px) {
   .leftMenu {
     display: none;
   }
+  .newsList {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 615px) {
   .rightMenu {
     display: none;
   }
@@ -252,14 +259,10 @@ button:hover {
   }
 }
 
-
-
 /* Pagination */
 
 .pagination-nav {
-  margin: 2rem 0 ;
-  
-
+  margin: 2rem 0;
 }
 
 .pagination-list {
@@ -268,22 +271,21 @@ button:hover {
   justify-content: center;
   gap: 1rem;
   color: inherit;
-  
-  
 }
 
 .pagination-list li {
-  border: 1px solid;
-  padding: .5rem;
+  padding: 0.75rem;
   border-color: #fff;
   font-size: 1rem;
-  border-radius: 50%;
 }
 
 .pagination-list li:hover {
   color: #0cc0df;
-  background-color: #fff;
-  border: none;
+  font-weight: 800;
+
+  /* background-color: #0cc0df;
+  border-radius: 50%;
+  border: none; */
 }
 
 /* footer */
@@ -294,7 +296,7 @@ footer {
   margin: 0 auto;
 }
 .footer {
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   height: 5rem;
   display: flex;
   flex-wrap: wrap;
@@ -322,12 +324,35 @@ footer {
 }
 
 #footer-p {
-  font-family: 'sofia';
+  font-family: "sofia";
   text-align: center;
   color: #0cc0df;
 }
 
 .nav-foot a:hover {
- font-size: 1.01em;
- text-decoration: underline;
+  font-size: 1.01em;
+  text-decoration: underline;
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
+
+.heart {
+  animation: burst 2s ease-out forwards;
+}
+
+.page-item.active .page-link {
+  padding: 0.75rem;
+  /* border: solid #0cc0df; */
+  border-radius: 10px;
+  border-bottom: 2px solid #0cc0df;
+  border-top: 2px solid #0cc0df;
 }
