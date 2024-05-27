@@ -147,14 +147,14 @@ body {
   cursor: pointer;
 }
 
-/* .navLinks li {
+.navLinks li {
   transition: all 0.2s ease-in;
-} */
-/* .navLinks li:hover {
-  transform: scale(1.05); 
+}
 
+.navLinks li:hover {
+  transform: scale(1.05);
   color: #0cc0df;
-} */
+}
 
 #searchInput {
   border-radius: 10px;
