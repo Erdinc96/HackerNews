@@ -9,7 +9,6 @@ import Pagination from "./components/Pagination";
 import { Icon } from "semantic-ui-react";
 import Footer from "./components/Footer";
 
-import { PacmanLoader } from "react-spinners";
 
 import RainbowEdition from "./components/RainbowEdition";
 
