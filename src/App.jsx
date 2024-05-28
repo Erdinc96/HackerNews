@@ -29,7 +29,7 @@ function App() {
         await new Promise((resolve) => setTimeout(resolve, 3000));
         //----------------------------------------------------------
 
-        const response = await fetch("/HackerNews.json");
+        const response = await fetch("./HackerNews.json");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
